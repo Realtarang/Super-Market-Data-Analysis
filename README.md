@@ -1,14 +1,14 @@
-# 🦈 Shark Tank India — Sales & Investment Analysis Dashboard
+# 🛒 SuparMart Sales Analysis — Tableau Dashboard
 
-A comprehensive data analytics project built on the **Shark Tank India** dataset (Seasons 1–5), visualized using **Tableau**. The dashboard explores pitch outcomes, investment trends, shark behaviour, industry performance, and founder demographics across all five seasons.
+An end-to-end sales analytics project built on the **Sample Superstore** dataset, visualized using **Tableau**. The dashboard uncovers key business insights around sales performance, profitability, regional trends, customer segments, and shipping behaviour across four years (2019–2022).
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── Shark_Tank_India.csv              # Source dataset (789 pitches, 80 columns)
-├── SharkTankIndiaDashboard.twb       # Tableau workbook (3 dashboards, 18 worksheets)
+├── Sample - Superstore-Main.xlsx   # Source dataset (Orders, Returns, People)
+├── SuparMartSalesAnalysis.twb      # Tableau workbook (all dashboards & worksheets)
 └── README.md
 ```
 
@@ -16,114 +16,97 @@ A comprehensive data analytics project built on the **Shark Tank India** dataset
 
 ## 📊 Dataset Overview
 
-**File:** `Shark_Tank_India.csv`
+**File:** `Sample - Superstore-Main.xlsx`
 
-| Attribute | Details |
+| Sheet | Description |
 |---|---|
-| Total Rows | 789 pitches |
-| Total Columns | 80 |
-| Seasons Covered | Season 1 – Season 5 |
-| Air Date Range | Dec 2021 – Mar 2026 |
+| `Orders` | 9,994 transaction records across the US (2019–2022) |
+| `Unique Returns` | 296 returned orders with Order IDs |
+| `People` | Regional managers mapped to their respective regions |
 
-### Column Categories
+### Key Fields (Orders Sheet)
 
-| Category | Fields |
-|---|---|
-| **Show Info** | Season Number, Episode Number, Pitch Number, Original Air Date, Episode Title, Anchor |
-| **Startup Info** | Startup Name, Industry, Business Description, Company Website, Started in |
-| **Financials** | Yearly Revenue, Monthly Sales, Gross Margin, Net Margin, EBITDA, Cash Burn |
-| **Pitch Details** | Original Ask Amount, Original Offered Equity, Valuation Requested |
-| **Deal Outcome** | Received Offer, Accepted Offer, Total Deal Amount, Total Deal Equity, Total Deal Debt, Deal Valuation |
-| **Shark Details** | Individual investment amount, equity, and debt for each of the 7 sharks + guest sharks |
-| **Founder Info** | Number of Presenters, Male/Female/Transgender Presenters, Pitchers Average Age, Pitchers City/State |
-| **Shark Presence** | Boolean flags for which sharks were present per episode |
+| Field | Type | Description |
+|---|---|---|
+| Order ID | String | Unique order identifier |
+| Order Date / Ship Date | Date | Order placement and shipping dates |
+| Ship Mode | String | Second Class, Standard Class, First Class, Same Day |
+| Customer ID / Name | String | Customer identifiers |
+| Segment | String | Consumer, Corporate, Home Office |
+| Region / State / City | String | Geographic breakdown (4 regions, US-wide) |
+| Category / Sub-Category | String | 3 categories, 17 sub-categories |
+| Sales | Decimal | Revenue per line item |
+| Quantity | Integer | Units sold |
+| Discount | Decimal | Discount applied (0–1 scale) |
+| Profit | Decimal | Profit per line item |
 
 ### Dataset Summary
 
 | Metric | Value |
 |---|---|
-| Total Pitches | 789 |
-| Pitches that Received an Offer | 502 |
-| Offers Accepted | 434 |
-| Total Investment (All Seasons) | ₹34,822.91 Lakhs |
-| Average Deal Size | ₹80.24 Lakhs |
-| Industries Represented | 18 |
-| Top Industries | Food & Beverage, Beauty/Fashion, Tech/Software, Medical/Health, Lifestyle/Home |
-| Top Pitcher States | Maharashtra, Delhi, Karnataka, Gujarat, Haryana |
-
-### Shark-wise Investment Summary
-
-| Shark | Total Invested | No. of Deals |
-|---|---|---|
-| Aman Gupta | ₹7,772.9 L | 164 |
-| Namita Thapar | ₹5,427.7 L | 136 |
-| Anupam Mittal | ₹4,662.8 L | 120 |
-| Peyush Bansal | ₹4,072.9 L | 104 |
-| Vineeta Singh | ₹3,420.6 L | 98 |
-| Ritesh Agarwal | ₹2,690.2 L | 59 |
-| Amit Jain | ₹1,384.4 L | 38 |
+| Total Records | 9,994 rows |
+| Date Range | Jan 2019 – Dec 2022 |
+| Total Sales | $2,297,200.86 |
+| Total Profit | $286,397.02 |
+| Unique Orders | 5,009 |
+| Unique Customers | 793 |
+| Product Categories | Furniture, Office Supplies, Technology |
 
 ---
 
 ## 📈 Tableau Dashboards
 
-**File:** `SharkTankIndiaDashboard.twb`
+**File:** `SuparMartSalesAnalysis.twb`
 
-The workbook contains **3 dashboards** built from **18 worksheets**.
-
----
-
-### Dashboard 1 — Shark Tank India Overview
-
-A high-level snapshot of show performance and pitch outcomes.
-
-**Worksheets included:**
-- **Total Startups** — KPI card showing total pitches across all seasons
-- **Total Deals** — KPI card showing total accepted deals
-- **Total Investment** — KPI card showing cumulative investment
-- **Deal Success Rate** — Overall percentage of pitches that converted to deals
-- **Deals Accepted vs Rejected** — Comparative breakdown of pitch outcomes
-- **Season-wise Pitches** — Volume of pitches across each season
+The workbook contains **3 dashboards** built from **11 worksheets**.
 
 ---
 
-### Dashboard 2 — Investment Analysis
+### Dashboard 1 — Sales Overview & Time Analysis
 
-Deep-dives into deal sizes, valuations, and investment patterns.
+Provides a high-level view of sales performance over time.
 
 **Worksheets included:**
-- **Avg Ask Amount** — Average amount requested by founders
-- **Avg Deal Amount** — Average amount actually invested
-- **Ask vs Deal Amount** — Gap analysis between ask and final deal
-- **Season-wise Investment Trend** — How total investment evolved season over season
-- **Number of Sharks vs Deal Amount** — Relationship between syndicate size and deal value
-- **Revenue vs Deal Amount** — Correlation between startup revenue and investment received
-- **Industry-wise Funding** — Which industries attracted the most capital
-- **Industry Success Rate** — Conversion rate by industry
+- **Total Sales** — KPI card showing overall revenue
+- **Total Profit** — KPI card showing overall profit
+- **Total Orders** — KPI card showing order volume
+- **Total Quantity Sold** — KPI card showing units sold
+- **Sales Trend Over Time** — Line chart tracking revenue trajectory
+- **Sales by Year-Month** — Monthly sales breakdown across all years
 
 ---
 
-### Dashboard 3 — Founder & Geography Analysis
+### Dashboard 2 — Region & Shipping Analysis
 
-Explores who the founders are and where they come from.
+Explores geographic distribution and logistics patterns.
 
 **Worksheets included:**
-- **Industry-wise Startups** — Distribution of pitches by industry
-- **Average Revenue by Industry** — Revenue benchmarks across sectors
-- **State-wise Startups** — Geographic heatmap of founder origins
-- **Founder Age Distribution** — Age profile of pitchers
-- **Total Startups (KPI)** — Supporting KPI for context
+- **Sales by Region** — Regional revenue comparison
+- **Sales and Profit by Region** — Side-by-side sales vs. profit by region
+- **Relative % Sales and Profit by Region** — Proportional share analysis
+- **Shipping Mode Analysis** — Distribution of orders by shipping method
+
+---
+
+### Dashboard 3 — Product & Profitability Analysis
+
+Digs into product-level and segment-level performance.
+
+**Worksheets included:**
+- **Sales by Subcategory and Region** — Cross-dimensional product breakdown
+- **Average Profit by Segment** — Profitability across Consumer, Corporate, and Home Office segments
+- **Sales vs Profit Relationship** — Scatter plot exploring the discount–profit dynamic
 
 ---
 
 ## 🔧 How to Use
 
 1. **Clone or download** this repository.
-2. Open `SharkTankIndiaDashboard.twb` in **Tableau Desktop**.
-3. When prompted, re-point the data source to `Shark_Tank_India.csv` from your local folder.
+2. Open `SuparMartSalesAnalysis.twb` in **Tableau Desktop**.
+3. When prompted, re-point the data source to `Sample - Superstore-Main.xlsx` from your local folder.
 4. All dashboards and worksheets will load automatically.
 
-> **Note:** The `.twb` file references the CSV as an external data source. Make sure both files are in the same directory, or update the path via *Data → Edit Data Source* inside Tableau.
+> **Note:** The `.twb` file stores the workbook structure and references the Excel file as an external data source. Make sure both files are in the same directory, or update the data source path manually inside Tableau via *Data → Edit Data Source*.
 
 ---
 
@@ -131,20 +114,19 @@ Explores who the founders are and where they come from.
 
 | Tool | Purpose |
 |---|---|
-| CSV (Excel-compatible) | Data storage and source |
-| Tableau Desktop | Dashboard design and visualisation |
+| Microsoft Excel (.xlsx) | Data storage and source |
+| Tableau Desktop 2026.1 | Dashboard design and visualisation |
 | GitHub | Version control and project sharing |
 
 ---
 
 ## 💡 Key Insights (Preview)
 
-- Only **55% of pitches** that received an offer were ultimately accepted, showing founders' negotiating stance.
-- **Aman Gupta** leads all sharks in both deal count (164) and total capital deployed.
-- **Food & Beverage** is the most pitched industry, but **Technology/Software** attracts higher average deal sizes.
-- **Maharashtra and Delhi** together account for the largest share of founders.
-- Deal amounts rise significantly when **2 or more sharks** co-invest, suggesting collaborative deals are more lucrative.
-- Investment volume has grown consistently from Season 1 to Season 5, reflecting the show's expanding scale.
+- **Technology** generates the highest sales but **Office Supplies** leads in profit margin.
+- **West** and **East** regions consistently outperform Central and South.
+- High **discounts** (>30%) strongly correlate with negative profit — a key business risk.
+- **Standard Class** shipping accounts for the majority of orders, while **Same Day** is rarely used.
+- The **Consumer** segment drives the highest order volume across all years.
 
 ---
 
@@ -156,4 +138,4 @@ Explores who the founders are and where they come from.
 
 ## 📄 License
 
-This project uses publicly available data sourced from Shark Tank India for educational and analytical purposes only.
+This project uses the publicly available **Sample Superstore** dataset provided by Tableau Software for educational and demonstration purposes.
